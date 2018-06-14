@@ -3,29 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context="com.example.admin.quran.MainActivity"
-    android:background="@drawable/bg">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1faa00">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Saad El Ghamidi"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:fontFamily="@font/calligraphy_pen"
-            android:textDirection="anyRtl"
-            />
-    </android.support.v7.widget.Toolbar>
+    tools:context="com.example.admin.quran.MainActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/surahlist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/surahlist"/>
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

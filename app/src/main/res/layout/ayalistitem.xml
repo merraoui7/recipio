@@ -14,7 +14,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/down" />
+            android:src="@drawable/ic_arrow_downward_black_24dp" />
 
         <TextView
             android:id="@+id/surahnamelist"
@@ -25,7 +25,8 @@
             android:layout_toLeftOf="@+id/surahidlist"
             android:layout_toStartOf="@+id/surahidlist"
             android:text="الفاتحة"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textColor="@color/colorText"/>
 
         <TextView
             android:id="@+id/surahidlist"
