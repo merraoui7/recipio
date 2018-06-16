@@ -3,10 +3,15 @@
     android:id="@+id/surahlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="@drawable/rvbg">
+
     <RelativeLayout
+        android:id="@+id/relativeID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clipToPadding="true">
+
         <ImageView
             android:id="@+id/installlistimg"
             android:layout_width="40dp"
@@ -25,8 +30,8 @@
             android:layout_toLeftOf="@+id/surahidlist"
             android:layout_toStartOf="@+id/surahidlist"
             android:text="الفاتحة"
-            android:textSize="30dp"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorText"
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/surahidlist"
@@ -35,6 +40,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/decor"
+            android:layout_centerVertical="true"
             android:gravity="center"
             android:text="20"
             android:textSize="18sp" />
