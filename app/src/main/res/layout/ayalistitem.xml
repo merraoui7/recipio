@@ -35,14 +35,15 @@
 
         <TextView
             android:id="@+id/surahidlist"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/decor"
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="20"
+            android:textColor="#92755a"
             android:textSize="18sp" />
     </RelativeLayout>
 
