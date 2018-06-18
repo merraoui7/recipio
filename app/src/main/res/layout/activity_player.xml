@@ -3,75 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/player_bg"
     tools:context="com.example.admin.quran.PlayerActivity">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1faa00"
-        android:id="@+id/toolbar"
-        android:layout_marginBottom="10dp"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Saad El Ghamidi"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:padding="5dp"
-            android:fontFamily="@font/calligraphy_pen"
-            android:textDirection="anyRtl"
-            />
-    </android.support.v7.widget.Toolbar>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/seekb"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/linearLayout2">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:text="08:05"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:id="@+id/currenttime"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:text="15:03"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:id="@+id/lenghttime"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_gravity="top"
-        android:layout_below="@+id/toolbar"
-        >
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/favorite"
-            android:layout_weight="1"
-            android:id="@+id/favoritesurah"/>
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/replay"
-            android:layout_weight="1"
-            android:id="@+id/replaysurah"/>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/surahname"
@@ -80,54 +14,111 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:background="@drawable/decor"
         android:gravity="center"
         android:text="الفاتحة"
         android:textColor="#fff"
-        android:textSize="30sp" />
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/saadgh"/>
 
-    <SeekBar
-        android:id="@+id/seekb"
+    <TextView
+        android:id="@+id/saadgh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="سعد الغامدي"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@id/linearLayout2"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="10dp"
-        android:max="100"
-        android:padding="@dimen/fab_margin" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/linearLayout"
-        android:padding="15dp">
+        android:paddingHorizontal="14dp">
 
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:src="@drawable/back"
-            android:id="@+id/back"/>
+        <TextView
+            android:id="@+id/currenttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="08:05"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+        <SeekBar
+            android:id="@+id/seekb"
             android:layout_weight="1"
-            android:src="@drawable/play"
-            android:id="@+id/play"/>
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:max="100"
+            android:layout_width="match_parent" />
 
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:src="@drawable/next"
-            android:id="@+id/next"/>
+        <TextView
+            android:id="@+id/lenghttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="15:03"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="15dp">
+
+        <ImageView
+            android:id="@+id/favoritesurah"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:src="@drawable/favorite" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:src="@drawable/back" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/play" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:src="@drawable/next" />
+
+        <ImageView
+            android:id="@+id/replaysurah"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:paddingRight="20dp"
+            android:src="@drawable/replay" />
+    </LinearLayout>
 
 
 </RelativeLayout>

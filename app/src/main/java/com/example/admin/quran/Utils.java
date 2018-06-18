@@ -1,12 +1,6 @@
 package com.example.admin.quran;
 
-
 import android.os.Environment;
-
-
-
-
-
 
 public class Utils {
     public boolean checksdcardisvaillable(){
