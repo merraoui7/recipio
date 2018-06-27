@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingHorizontal="5dp"
     android:paddingVertical="15dp"
-    android:background="@drawable/rvbg">
+    android:background="@drawable/bg_suar_icon">
 
     <RelativeLayout
         android:id="@+id/relativeID"
@@ -20,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_arrow_downward_black_24dp" />
+            android:src="@drawable/ic_arrow_downward" />
 
         <TextView
             android:id="@+id/surahnamelist"
@@ -40,7 +40,7 @@
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/decor"
+            android:background="@drawable/ic_suar_number"
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="20"

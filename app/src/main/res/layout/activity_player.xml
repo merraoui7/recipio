@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/player_bg"
+    android:background="@drawable/bg_player"
     tools:context="com.example.admin.quran.PlayerActivity">
 
 
@@ -83,33 +83,33 @@
         android:paddingVertical="15dp">
 
         <ImageView
-            android:id="@+id/favoritesurah"
+            android:id="@+id/shuffle"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_weight="1"
             android:paddingLeft="20dp"
-            android:src="@drawable/favorite" />
+            android:src="@drawable/ic_shuffle" />
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:src="@drawable/back" />
+            android:src="@drawable/ic_skip_previous" />
 
         <ImageView
             android:id="@+id/play"
             android:layout_width="40dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:src="@drawable/play" />
+            android:src="@drawable/ic_play" />
 
         <ImageView
             android:id="@+id/next"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:src="@drawable/next" />
+            android:src="@drawable/ic_skip_next" />
 
         <ImageView
             android:id="@+id/replaysurah"
@@ -117,7 +117,7 @@
             android:layout_height="34dp"
             android:layout_weight="1"
             android:paddingRight="20dp"
-            android:src="@drawable/replay" />
+            android:src="@drawable/ic_replay" />
     </LinearLayout>
 
 
