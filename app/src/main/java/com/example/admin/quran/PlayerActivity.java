@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -34,6 +38,7 @@ public class PlayerActivity extends AppCompatActivity {
     Thread thread;
     boolean isreplay = false;
     boolean isshuffle = false;
+    private AdView mAdView;
 
 
     @Override
@@ -41,6 +46,9 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         bundle= getIntent().getExtras();
         currentAyah =bundle.getInt("index");
