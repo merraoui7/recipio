@@ -1,12 +1,16 @@
 package com.example.admin.quran;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -36,37 +40,49 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this, "ca-app-pub-4577547346540393~6693274471");
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        if (isNetworkAvailable()) {
+
+            setContentView(R.layout.activity_main);
 
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-        datalist=new ArrayList <>();
-        datalist.clear();
-        datalist=new GetDatabase().getdata();
-        surahAdapter = new SurahAdapter(datalist,this);
-
-        recyclerView = (RecyclerView) findViewById(R.id.surahlist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        recyclerView.setAdapter(surahAdapter);
+            MobileAds.initialize(this, "ca-app-pub-4577547346540393~6693274471");
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
 
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
 
-        File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + "quran-saad-elghamidi");
-        if (!folder.exists()) {
-            folder.mkdirs();
+            datalist = new ArrayList<>();
+            datalist.clear();
+            datalist = new GetDatabase().getdata();
+            surahAdapter = new SurahAdapter(datalist, this);
+
+            recyclerView = (RecyclerView) findViewById(R.id.surahlist);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setHasFixedSize(true);
+
+            recyclerView.setAdapter(surahAdapter);
+
+
+            File folder = new File(Environment.getExternalStorageDirectory() +
+                    File.separator + "quran-saad-elghamidi");
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+
+
+        } else {
+            try {
+                setContentView(R.layout.activity_no_connexion);
+            } catch (Exception e) {
+                Log.d("key", "error connexion layout");
+            }
+
         }
-
     }
 
     public boolean checkFileIsExist(String path){
@@ -159,5 +175,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void downloadfile(String url){
         new DownloadSurah().execute(url);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
