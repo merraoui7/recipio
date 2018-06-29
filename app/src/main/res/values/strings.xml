@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">quran</string>
     <string name="title_activity_player">PlayerActivity</string>
+    <string name="connexion_error">الإنترنت غير متوفر، تحقق من اتصالك بالإنترنت ثم حاول مرة أخرى</string>
 </resources>
