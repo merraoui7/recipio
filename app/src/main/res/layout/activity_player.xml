@@ -3,9 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/player_bg"
+    android:background="@drawable/bg_player"
     tools:context="com.example.admin.quran.PlayerActivity">
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
     <TextView
         android:id="@+id/surahname"
@@ -83,33 +93,33 @@
         android:paddingVertical="15dp">
 
         <ImageView
-            android:id="@+id/favoritesurah"
+            android:id="@+id/shuffle"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_weight="1"
             android:paddingLeft="20dp"
-            android:src="@drawable/favorite" />
+            android:src="@drawable/ic_shuffle" />
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:src="@drawable/back" />
+            android:src="@drawable/ic_skip_previous" />
 
         <ImageView
             android:id="@+id/play"
             android:layout_width="40dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:src="@drawable/play" />
+            android:src="@drawable/ic_play" />
 
         <ImageView
             android:id="@+id/next"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:src="@drawable/next" />
+            android:src="@drawable/ic_skip_next" />
 
         <ImageView
             android:id="@+id/replaysurah"
@@ -117,7 +127,7 @@
             android:layout_height="34dp"
             android:layout_weight="1"
             android:paddingRight="20dp"
-            android:src="@drawable/replay" />
+            android:src="@drawable/ic_replay" />
     </LinearLayout>
 
 

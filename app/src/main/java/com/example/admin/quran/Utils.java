@@ -12,9 +12,11 @@ public class Utils {
             return false;
         }
     }
+
     public String milliSecondsToTimer(long milliseconds){
         String finalTimerString = "";
         String secondsString = "";
+        String minuteString = "";
 
         // Convert total duration into time
         int hours = (int)( milliseconds / (1000*60*60));
@@ -25,13 +27,18 @@ public class Utils {
             finalTimerString = hours + ":";
         }
 
-        // Prepending 0 to seconds if it is one digit
+        if(minutes < 10){
+            minuteString = "0" + minutes;
+        }else {
+            minuteString = "" + minutes;
+        }
+
         if(seconds < 10){
             secondsString = "0" + seconds;
         }else{
             secondsString = "" + seconds;}
 
-        finalTimerString = finalTimerString + minutes + ":" + secondsString;
+        finalTimerString = finalTimerString + minuteString + ":" + secondsString;
 
         // return timer string
         return finalTimerString;

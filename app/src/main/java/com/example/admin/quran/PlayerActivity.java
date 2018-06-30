@@ -10,9 +10,13 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class PlayerActivity extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class PlayerActivity extends AppCompatActivity {
     ImageView replay;
     ImageView next;
     ImageView back;
+    ImageView shuffle;
     Utils utils=new Utils();
     private List<Surah> datalist= new GetDatabase().getdata();
     boolean isexistt=true;
@@ -32,6 +37,8 @@ public class PlayerActivity extends AppCompatActivity {
     TextView lenghtTime;
     Thread thread;
     boolean isreplay = false;
+    boolean isshuffle = false;
+    private AdView mAdView;
 
 
     @Override
@@ -39,6 +46,9 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         bundle= getIntent().getExtras();
         currentAyah =bundle.getInt("index");
@@ -53,6 +63,8 @@ public class PlayerActivity extends AppCompatActivity {
         currentTime = (TextView) findViewById(R.id.currenttime);
         lenghtTime = (TextView) findViewById(R.id.lenghttime);
         replay = (ImageView) findViewById(R.id.replaysurah);
+        shuffle = (ImageView) findViewById(R.id.shuffle);
+
 
         seekBar.setMax(mediaPlayer.getDuration());
 
@@ -83,12 +95,13 @@ public class PlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isreplay){
                     isreplay= false;
-                    replay.setImageResource(R.drawable.replay1);
+                    replay.setImageResource(R.drawable.ic_replay_pressed);
                 }else {
                     isreplay= true;
-                    replay.setImageResource(R.drawable.replay);
+                    isshuffle = false ;
+                    replay.setImageResource(R.drawable.ic_replay);
                 }
-
+                checkcompletestate();
             }
         });
         play.setOnClickListener(new View.OnClickListener() {
@@ -96,10 +109,10 @@ public class PlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
                     mediaPlayer.pause();
-                    play.setImageResource(R.drawable.play);
+                    play.setImageResource(R.drawable.ic_play);
                 }else {
                     mediaPlayer.start();
-                    play.setImageResource(R.drawable.pause);
+                    play.setImageResource(R.drawable.ic_pause);
                     updateSeekThread();
                 }
             }
@@ -132,6 +145,20 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         });
+        shuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isshuffle){
+                    isshuffle = false;
+                    shuffle.setImageResource(R.drawable.ic_shuffle_pressed);
+                }else {
+                    isreplay = false;
+                    isshuffle = true;
+                    shuffle.setImageResource(R.drawable.ic_shuffle);
+                }
+                checkcompletestate();
+            }
+        });
         oncompletion();
 
     }
@@ -143,16 +170,16 @@ public class PlayerActivity extends AppCompatActivity {
 
     public void playSong(int current)  {
         mediaPlayer.reset();
-            try {
-                if(isIsexistt()){
-                    String root=Environment.getExternalStorageDirectory()+ "/quran-saad-elghamidi/"+datalist.get(0).getFilename()+".mp3";
-                    mediaPlayer.setDataSource(root);
-                }else {
-                    mediaPlayer.setDataSource(String.valueOf(Uri.parse(datalist.get(current).getUrl())));
+        try {
+            if(isIsexistt()){
+                String root=Environment.getExternalStorageDirectory()+ "/quran-saad-elghamidi/"+datalist.get(0).getFilename()+".mp3";
+                mediaPlayer.setDataSource(root);
+            }else {
+                mediaPlayer.setDataSource(String.valueOf(Uri.parse(datalist.get(current).getUrl())));
             }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         try {
@@ -161,10 +188,24 @@ public class PlayerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         mediaPlayer.start();
-        play.setImageResource(R.drawable.pause);
+        play.setImageResource(R.drawable.ic_pause);
         surahname.setText(datalist.get(current).getName());
         updateSeekThread();
 
+    }
+    public void checkcompletestate(){
+        if(isshuffle){
+            isreplay = false;
+            shuffle.setImageResource(R.drawable.ic_shuffle_pressed);
+        }else{
+            shuffle.setImageResource(R.drawable.ic_shuffle);
+        }
+        if (isreplay){
+            isshuffle = false;
+            replay.setImageResource(R.drawable.ic_replay_pressed);
+        }else {
+            replay.setImageResource(R.drawable.ic_replay);
+        }
     }
 
     public boolean checkFileIsExist(String path){
@@ -223,7 +264,12 @@ public class PlayerActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mp) {
                 if(isreplay){
                     playSong(currentAyah);
-                }else {
+                }
+                else if (isshuffle){
+                    Random rand = new Random();
+                    currentAyah = rand.nextInt((datalist.size() - 1) - 0 + 1) + 0;
+                    playSong(currentAyah);
+                } else{
                     if(currentAyah<datalist.size()-1){
                         currentAyah++;
                         playSong(currentAyah);
