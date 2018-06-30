@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_player"
+    tools:context="com.example.admin.quran.PlayerActivity">
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/surahname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="الفاتحة"
+        android:textColor="#fff"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/saadgh"/>
+
+    <TextView
+        android:id="@+id/saadgh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="سعد الغامدي"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@id/linearLayout2"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:gravity="center"
+        android:paddingHorizontal="14dp">
+
+        <TextView
+            android:id="@+id/currenttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="08:05"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <SeekBar
+            android:id="@+id/seekb"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:max="100"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:id="@+id/lenghttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="15:03"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="15dp">
+
+        <ImageView
+            android:id="@+id/shuffle"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:src="@drawable/ic_shuffle" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_skip_previous" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_play" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_skip_next" />
+
+        <ImageView
+            android:id="@+id/replaysurah"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_replay" />
+    </LinearLayout>
+
+
+</RelativeLayout>

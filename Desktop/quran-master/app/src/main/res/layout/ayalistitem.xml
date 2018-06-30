@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/surahlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="15dp"
+    android:background="@drawable/bg_suar_icon">
+
+    <RelativeLayout
+        android:id="@+id/relativeID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true">
+
+        <ImageView
+            android:id="@+id/installlistimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_downward" />
+
+        <TextView
+            android:id="@+id/surahnamelist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_toLeftOf="@+id/surahidlist"
+            android:layout_toStartOf="@+id/surahidlist"
+            android:text="الفاتحة"
+            android:textColor="@color/colorText"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/surahidlist"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_suar_number"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="20"
+            android:textColor="#92755a"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+</LinearLayout>
