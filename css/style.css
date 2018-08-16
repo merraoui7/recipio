@@ -1,0 +1,12 @@
+/*global attribute*/
+.main-bg {
+    background: #1faa00;
+}
+.capt-pos {
+    position: relative;
+    top: 25%;
+}
+.navbar-nav .active {
+    background: white;
+    border-radius: 3px;
+}
